@@ -1,3 +1,3 @@
-ทำ testcase ในเว็บ demoqa.com
+ฝึกทำ testcase ในเว็บ demoqa 
 
-จุดประสงค์เพื่อฝึกซ้อมหาโจทย์ใหม่ๆ เตรียมพร้อมในการเป็น automationtester 
+จุดประสงค์เผื่อฝึกฝนทักษะในฝั่ง automationtester
