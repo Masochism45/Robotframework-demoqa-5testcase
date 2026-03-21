@@ -16,26 +16,16 @@ Suite Teardown     Close Browser
 
 *** Keywords ***
 Open Browser And Config Downloads
-    # 1. สร้าง Chrome Options ด้วย Python Direct Evaluate
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    
-    # 2. ตั้งค่า Preferences (ปิดหน้าต่างถาม และระบุ Path)
-    # หมายเหตุ: ต้องมั่นใจว่า ${DOWNLOAD_DIR} เป็น Full Path (เช่น C:\project\downloads)
     ${prefs}=    Create Dictionary    
     ...    download.default_directory=${DOWNLOAD_DIR}
     ...    download.prompt_for_download=${FALSE}
     ...    download.directory_upgrade=${TRUE}
     ...    profile.default_content_settings.popups=${0}
     ...    profile.default_content_setting_values.automatic_downloads=${1}
-    
-    # 3. ยัด prefs เข้าไปใน options
     Call Method    ${chrome_options}    add_experimental_option    prefs    ${prefs}
-    
-    # 4. เพิ่ม Arguments พื้นฐาน
     Call Method    ${chrome_options}    add_argument    --start-maximized
     Call Method    ${chrome_options}    add_argument    --disable-extensions
-
-    # 5. เปิด Browser โดยส่งก้อน options เข้าไป
     Open Browser    ${baseUrl}    browser=chrome    options=${chrome_options}
 
 *** Test Cases ***
